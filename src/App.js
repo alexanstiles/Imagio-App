@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import { auth } from "./Authentication/Firebase";
 import SignIn from "./Pages/SignIn";
+import SignUp from "./Pages/SignUp";
 import UserProvider from "./Authentication/UserProvider";
 
 /**
@@ -41,6 +42,7 @@ function AppRouter() {
   return (
     <Router>
       <Switch>
+        <Route exact path="/signup" component={SignUp} />
         <Route exact path="/signin" component={SignIn} />
         <Route exact path="/" component={SignIn} />
       </Switch>
