@@ -28,7 +28,7 @@ export const generateUserDocument = async (user, additionalData) => {
         lastName,
         email,
         ...additionalData,
-      });
+      }); // Defines user information
     } catch (error) {
       console.error("Error creating user document", error); // Error message if failure
     }
@@ -41,10 +41,9 @@ export const getUserDocument = async (uid) => {
   try {
     const userDocument = await firestore.doc(`users/${uid}`).get(); // Gets the user document
     return {
-      // Returns the data associated with said user
       uid,
       ...userDocument.data(),
-    };
+    }; // Returns the data associated with said user
   } catch (error) {
     console.error("Error fetching user", error); // Error message if failure
   }
