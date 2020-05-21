@@ -29,6 +29,9 @@ export default function PageBar() {
     history.push("/profile");
   }
 
+  function pushPost() {
+    history.push("/createPost");
+  }
 
   return (
     <>
@@ -38,6 +41,7 @@ export default function PageBar() {
               <Typography variant="h2" className={classes.title}>
                 Imagio App
               </Typography>
+              <Button color= 'inherit' onClick={pushPost} size="large">  Post </Button>
               <Button color= 'inherit' onClick={pushProfile} size="large">  Profile </Button>
               <Button color= 'inherit' onClick={pushHome} size="large"> Home </Button>
               <Button color="inherit">Login</Button>
