@@ -1,7 +1,6 @@
 # Imagio-App
 
 - Firebase database
-- React front-end
-- Express server
+- React front-end\
 - Deploy on Heroku
-- Redux??
+- Redux
