@@ -1,5 +1,5 @@
 import React from "react";
-import Post from './components/Post'; 
+import Post from './Components/Post'; 
 import { Box } from '@material-ui/core'; 
 
 
