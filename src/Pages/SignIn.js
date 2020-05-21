@@ -66,7 +66,7 @@ const SignIn = () => {
     try {
       auth
         .signInWithEmailAndPassword(email, password)
-        .then(history.push("/home"));
+        .then(history.push("/profile"));
     } catch (error) {
       console.log("There was a problem signing you in, please try again");
     }
