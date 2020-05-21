@@ -2,24 +2,23 @@ import React from 'react';
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import reducer from "./Store/Post/reducer";
+import Home from "./Home";
+import Profile from './Profile'; 
+import NavBar from './NavBar'; 
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 const store = createStore(reducer);
 
-function App() {
+export default function App() {
   return (
     <Provider store={store}>
-    <div style={{ textAlign: 'center' }}>
-      <header>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <NavBar />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/profile" component={Profile} />
+      </Switch>
+    </Router>
     </Provider>
   );
 }
-
-export default App;
