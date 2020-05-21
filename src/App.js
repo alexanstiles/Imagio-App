@@ -1,18 +1,4 @@
 import React from "react";
-<<<<<<< HEAD
-import Home from "./Home";
-import Profile from './Profile'; 
-import NavBar from './NavBar'; 
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
-export default function App() {
-  return (
-    <Router>
-      <NavBar />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/profile" component={Profile} />
-=======
 import {
   BrowserRouter as Router,
   Switch,
@@ -22,6 +8,9 @@ import {
 import { auth } from "./Authentication/Firebase";
 import SignIn from "./Pages/SignIn";
 import SignUp from "./Pages/SignUp";
+import Home from "./Pages/Home";
+import Profile from "./Pages/Profile";
+import NavBar from "./Container/NavBar";
 import UserProvider from "./Authentication/UserProvider";
 
 /**
@@ -55,17 +44,15 @@ function App() {
 function AppRouter() {
   return (
     <Router>
+      <NavBar />
       <Switch>
+        <PrivateRoute exact path="/profile" component={Profile} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/signin" component={SignIn} />
-        <Route exact path="/" component={SignIn} />
->>>>>>> firebase
+        <Route exact path="/" component={Home} />
       </Switch>
     </Router>
   );
 }
-<<<<<<< HEAD
-=======
 
 export default App; // Exports the application
->>>>>>> firebase
