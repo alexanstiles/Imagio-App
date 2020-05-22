@@ -49,7 +49,7 @@ function AppRouter() {
         <PrivateRoute exact path="/profile" component={Profile} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/signin" component={SignIn} />
-        <Route exact path="/" component={Home} />
+        <PrivateRoute exact path="/" component={Home} />
       </Switch>
     </Router>
   );
