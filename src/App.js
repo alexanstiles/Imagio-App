@@ -15,7 +15,7 @@ import UserProvider from "./Authentication/UserProvider";
 
 /**
  * A private route that requires user authentication before displaying certian pages.
- * @param {component} param0 the page component to be rendered
+ * @param {*} param0 the page component to be rendered
  */
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route

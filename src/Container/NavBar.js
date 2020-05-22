@@ -30,9 +30,9 @@ export default function PageBar() {
     history.push("/signin");
   }
 
-  function pushToSignUp() {
-    history.push("/signup");
-  }
+  // function pushToSignUp() {
+  //   history.push("/signup");
+  // }
 
   function pushProfile() {
     history.push("/profile");
