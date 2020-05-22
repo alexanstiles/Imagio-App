@@ -13,6 +13,7 @@ import Profile from "./Pages/Profile";
 import NavBar from "./Container/NavBar";
 import CreatePost from "./Components/CreatePost";
 import UserProvider from "./Authentication/UserProvider";
+import CssBaseline from '@material-ui/core/CssBaseline'
 
 /**
  * A private route that requires user authentication before displaying certian pages.
@@ -33,6 +34,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 function App() {
   return (
     <UserProvider>
+      <CssBaseline />
       <AppRouter />
     </UserProvider>
   );
