@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Post() {
+export default function Post(image, caption) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -42,7 +42,7 @@ export default function Post() {
       <Card className={classes.card}>
         <CardMedia
           className={classes.cardMedia}
-          image="https://source.unsplash.com/random"
+          image={"https://source.unsplash.com/random"}
           title="Image title"
         />
         <CardContent>
