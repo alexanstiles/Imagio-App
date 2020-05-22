@@ -13,7 +13,6 @@ import Profile from "./Pages/Profile";
 import NavBar from "./Container/NavBar";
 import CreatePost from "./Components/CreatePost";
 import UserProvider from "./Authentication/UserProvider";
-import CreatePost from './Components/CreatePost'; 
 import CssBaseline from '@material-ui/core/CssBaseline'
 
 /**

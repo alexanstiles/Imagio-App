@@ -83,7 +83,7 @@ export default function CreatePost() {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick = {addPost}
+            onClick={addPost}
           >
             Create Post
           </Button>
