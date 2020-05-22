@@ -1,8 +1,11 @@
 import React from "react";
+import ProfileCard from "../Components/ProfileCard";
 
 export default function Profile(){ 
     return(
-        <h1> Welcome to the Profile Page!  </h1> 
+        <>
+        <ProfileCard />
+        </>
     ); 
 
 }
