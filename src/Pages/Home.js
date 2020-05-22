@@ -26,6 +26,10 @@ function Copyright() {
 }
 
 const useStyles = makeStyles((theme) => ({
+  heroContent: {
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(8, 0, 6),
+  },
   cardGrid: {
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
@@ -71,7 +75,7 @@ export default function Home() {
         <Grid container spacing={4}>
           {cards.map((card) => (
             <Grid item key={card} xs={12}>
-              <Post />
+              <Post image={card.image} caption={card.caption}/>
             </Grid>
           ))}
         </Grid>
