@@ -52,4 +52,5 @@ export const getUserDocument = async (uid) => {
 firebase.initializeApp(firebaseConfig); // Initialize the firebase configuration
 export const auth = firebase.auth(); // Exports the authorization
 export const firestore = firebase.firestore(); // Exports the firestore
+// export const imageStorage = firebase.storage(); // Exports the firebase storage
 export default firebase; // Exports the default function

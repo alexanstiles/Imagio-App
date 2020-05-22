@@ -30,12 +30,16 @@ export default function PageBar() {
     history.push("/signin");
   }
 
-  function pushToSignUp() {
-    history.push("/signup");
-  }
+  // function pushToSignUp() {
+  //   history.push("/signup");
+  // }
 
   function pushProfile() {
     history.push("/profile");
+  }
+
+  function pushPost() {
+    history.push("/createPost");
   }
 
   return (
@@ -44,8 +48,12 @@ export default function PageBar() {
         <AppBar position="static">
           <Toolbar>
             <Typography variant="h2" className={classes.title}>
-              Imagio App
+              Imagio
             </Typography>
+            <Button color="inherit" onClick={pushPost} size="large">
+              {" "}
+              Post{" "}
+            </Button>
             <Button color="inherit" onClick={pushProfile} size="large">
               {" "}
               Profile{" "}

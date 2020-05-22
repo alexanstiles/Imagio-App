@@ -11,13 +11,14 @@ import SignUp from "./Pages/SignUp";
 import Home from "./Pages/Home";
 import Profile from "./Pages/Profile";
 import NavBar from "./Container/NavBar";
+import CreatePost from "./Components/CreatePost";
 import UserProvider from "./Authentication/UserProvider";
 import CreatePost from './Components/CreatePost'; 
 import CssBaseline from '@material-ui/core/CssBaseline'
 
 /**
  * A private route that requires user authentication before displaying certian pages.
- * @param {component} param0 the page component to be rendered
+ * @param {*} param0 the page component to be rendered
  */
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -50,10 +51,10 @@ function AppRouter() {
       <NavBar />
       <Switch>
         <PrivateRoute exact path="/profile" component={Profile} />
-        <Route exact path="/createPost" component={CreatePost} />
+        <PrivateRoute exact path="/" component={Home} />
+        <PrivateRoute exact path="/createPost" component={CreatePost} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/signin" component={SignIn} />
-        <Route exact path="/" component={Home} />
       </Switch>
     </Router>
   );
