@@ -34,6 +34,8 @@ export default function CreatePost() {
   const classes = useStyles();
   const [caption, setCaption] = useState("");
 
+  function uploadImage() {}
+
   function addPost(event) {
     event.preventDefault();
     console.log("this is ");
@@ -68,6 +70,10 @@ export default function CreatePost() {
           <form className={classes.form} noValidate onSubmit={addPost}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
+                <img
+                  alt="random"
+                  src="https://source.unsplash.com/random"
+                ></img>
                 <TextField
                   variant="outlined"
                   required
@@ -81,6 +87,16 @@ export default function CreatePost() {
                 />
               </Grid>
             </Grid>
+            <Button
+              type="upload"
+              fullWidth
+              variant="contained"
+              color="inherit"
+              className={classes.submit}
+              onClick={uploadImage}
+            >
+              Upload Image
+            </Button>
             <Button
               type="submit"
               fullWidth
