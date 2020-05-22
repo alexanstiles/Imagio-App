@@ -2,6 +2,7 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
+import "firebase/storage";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -21,13 +22,15 @@ export const generateUserDocument = async (user, additionalData) => {
 
   if (!snapshot.exists) {
     // If a user does not exist, it makes one
-    const { firstName, lastName, email } = user;
+    const { firstName, lastName, email, bioimp, websiteimp, countryimp } = user;
     try {
       await userRef.set({
         firstName,
         lastName,
         email,
-        ...additionalData,
+        bioimp,
+        websiteimp,
+        countryimp,
       }); // Defines user information
     } catch (error) {
       console.error("Error creating user document", error); // Error message if failure
@@ -52,5 +55,5 @@ export const getUserDocument = async (uid) => {
 firebase.initializeApp(firebaseConfig); // Initialize the firebase configuration
 export const auth = firebase.auth(); // Exports the authorization
 export const firestore = firebase.firestore(); // Exports the firestore
-// export const imageStorage = firebase.storage(); // Exports the firebase storage
+export const imageStorage = firebase.storage(); // Exports the firebase storage
 export default firebase; // Exports the default function

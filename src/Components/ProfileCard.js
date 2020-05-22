@@ -3,9 +3,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import {firestore} from "../Authentication/Firebase";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import { firestore } from "../Authentication/Firebase";
 import { UserContext } from "../Authentication/UserProvider";
 
 const useStyles = makeStyles((theme) => ({
@@ -32,7 +32,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ProfileCard() {
-  const { uid, firstName, lastName, bioimp, websiteimp, countryimp } = useContext(UserContext);
+  const {
+    uid,
+    firstName,
+    lastName,
+    bioimp,
+    websiteimp,
+    countryimp,
+  } = useContext(UserContext);
   const classes = useStyles();
   const [first, setFirst] = useState(firstName);
   const [last, setLast] = useState(lastName);
@@ -42,7 +49,7 @@ export default function ProfileCard() {
 
   function handleChange(event) {
     event.preventDefault();
-    const {name, value} = event.currentTarget;
+    const { name, value } = event.currentTarget;
     if (name === "firstName") {
       setFirst(value);
     }
@@ -61,7 +68,8 @@ export default function ProfileCard() {
   }
 
   function saveData() {
-    firestore.collection("users")
+    firestore
+      .collection("users")
       .doc(uid)
       .set({
         firstName: first,
@@ -85,11 +93,11 @@ export default function ProfileCard() {
           Personal Profile
         </Typography>
         <React.Fragment>
-          <Typography variant="h5" gutterBottom>
-          </Typography>
+          <Typography variant="h5" gutterBottom></Typography>
           <br />
           <Typography variant="subtitle1">
-          Provide some information about yourself so that others can get to know you!
+            Provide some information about yourself so that others can get to
+            know you!
           </Typography>
           <br />
           <Grid container spacing={3}>
@@ -151,21 +159,23 @@ export default function ProfileCard() {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Button variant="outlined" size="medium" style={{marginTop: 10}} disableElevation>
+              <Button
+                variant="outlined"
+                size="medium"
+                style={{ marginTop: 10 }}
+                disableElevation
+              >
                 Upload profile picture
               </Button>
-            </Grid> 
+            </Grid>
             <Grid item xs={12}>
-              <div>
-                This is temp image space
-              </div>
-              <img >
-              </img>
+              <div>This is temp image space</div>
+              <img></img>
             </Grid>
             <Grid>
-            <div style={{marginTop: 125}}></div>
+              <div style={{ marginTop: 125 }}></div>
             </Grid>
-            <Grid container justify="center" alignItems="center" item xs={12} >
+            <Grid container justify="center" alignItems="center" item xs={12}>
               <Button variant="contained" onClick={saveData}>
                 Save
               </Button>
