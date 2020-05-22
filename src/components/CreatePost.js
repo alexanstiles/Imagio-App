@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -33,23 +33,30 @@ const useStyles = makeStyles((theme) => ({
 export default function CreatePost() {
   const { uid } = useContext(UserContext);
   const classes = useStyles();
+  const [caption, setCaption] = useState('');
   
   function addPost() {
-    firestore.collection(uid)
-      .add({
+    firestore.collection("posts")
+      .doc("insertimagehere")
+      .set({
         caption:caption, 
+        id:uid
       })
-      .then(function (docRef) {
-        console.log("Document ID:", docRef.id);
+      .then(function () {
+        console.log("Document successfully written!");
       })
       .catch(function (error) {
-        console.error('Error writing document: “, error');
+        console.error("Error writing document: ", error);
       });
+  }
+
+  function handleChange(event) {
+    event.preventDefault();
+    setCaption(event.target.value)
   }
   
   return (
     <Container component="main" maxWidth="xs">
-      <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
           Create A Post
@@ -65,8 +72,8 @@ export default function CreatePost() {
                 label="Caption"
                 name="caption"
                 autoComplete="caption"
-                value="caption"
-                // onChange=
+                value={caption}
+                onChange={handleChange}
               />
             </Grid>
           </Grid>
@@ -76,7 +83,7 @@ export default function CreatePost() {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick = { addPost }
+            onClick = {addPost}
           >
             Create Post
           </Button>
