@@ -64,9 +64,7 @@ const SignIn = () => {
   const signInWithEmailAndPasswordHandler = (event, email, password) => {
     event.preventDefault();
     try {
-      auth
-        .signInWithEmailAndPassword(email, password)
-        .then(history.push("/profile"));
+      auth.signInWithEmailAndPassword(email, password).then(history.push("/"));
     } catch (error) {
       console.log("There was a problem signing you in, please try again");
     }
