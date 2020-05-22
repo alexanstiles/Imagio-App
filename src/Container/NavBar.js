@@ -24,7 +24,6 @@ export default function PageBar() {
 
   const logoutUser = () => {
     auth.signOut();
-    auth = null;
     history.push("/signin");
   };
 
