@@ -8,7 +8,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { UserContext } from "../Authentication/UserProvider";
-import { firestore } from "../Authentication/Firebase";
+import { firestore, imageStorage } from "../Authentication/Firebase";
+import FileUploader from "react-firebase-file-uploader";
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
@@ -41,8 +42,16 @@ export default function CreatePost() {
   const { uid } = useContext(UserContext);
   const classes = useStyles();
   const [caption, setCaption] = useState("");
+  const [imageURL, setImageURL] = useState("");
 
-  function uploadImage() {}
+  const handleUploadSuccess = (filename) => {
+    imageStorage
+      .ref(uid)
+      .child(filename)
+      .getDownloadURL()
+      .then((url) => setImageURL(url));
+    console.log(imageURL);
+  };
 
   function addPost(event) {
     event.preventDefault();
@@ -84,12 +93,7 @@ export default function CreatePost() {
           <form className={classes.form} noValidate onSubmit={addPost}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <div className={classes.cardMedia}>
-                  <img
-                    alt="random"
-                    src="https://source.unsplash.com/random"
-                  ></img>
-                </div>
+                <img alt="random" src={imageURL} width="500" height="600"></img>
                 <TextField
                   variant="outlined"
                   required
@@ -103,13 +107,20 @@ export default function CreatePost() {
                 />
               </Grid>
             </Grid>
+            <FileUploader
+              accept="image/*"
+              name="postImage"
+              randomizeFilename
+              storageRef={imageStorage.ref(uid)}
+              onUploadSuccess={handleUploadSuccess}
+            />
             <Button
               type="upload"
               fullWidth
               variant="contained"
               color="inherit"
               className={classes.submit}
-              onClick={uploadImage}
+              onClick={addPost}
             >
               Upload Image
             </Button>
