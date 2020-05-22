@@ -13,12 +13,13 @@ import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    width: 800,
+  card: {
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
   },
-  media: {
-    height: 0,
-    paddingTop: "56.25%", // 16:9
+  cardMedia: {
+    paddingTop: '56.25%', // 16:9
   },
   expand: {
     transform: "rotate(0deg)",
@@ -38,8 +39,12 @@ export default function Post() {
   };
 
   return (
-    <Card className={classes.root}>
-      <CardMedia className={classes.media} image="/photo.jpg" />
+    <Card className={classes.card}>
+    <CardMedia
+        className={classes.cardMedia}
+        image="https://source.unsplash.com/random"
+        title="Image title"
+      />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
           This is where your caption goes.
@@ -48,9 +53,6 @@ export default function Post() {
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
         </IconButton>
         <IconButton
           className={clsx(classes.expand, {
