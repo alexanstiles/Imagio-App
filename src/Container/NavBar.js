@@ -35,6 +35,10 @@ export default function PageBar() {
     history.push("/signup");
   }
 
+  function pushToSignIn() {
+    history.push("/signin");
+  }
+
   function pushProfile() {
     history.push("/profile");
   }
@@ -43,7 +47,7 @@ export default function PageBar() {
     history.push("/createPost");
   }
 
-  if (auth == null) {
+  if (auth.currentUser === null) {
     return (
       <>
         <div className={classes.root}>
@@ -52,6 +56,9 @@ export default function PageBar() {
               <Typography variant="h2" className={classes.title}>
                 Imagio
               </Typography>
+              <Button color="inherit" onClick={pushToSignIn}>
+                Sign In
+              </Button>
               <Button color="inherit" onClick={pushToSignUp}>
                 Sign Up
               </Button>
