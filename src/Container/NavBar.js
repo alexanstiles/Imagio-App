@@ -44,7 +44,7 @@ export default function PageBar() {
         <AppBar position="static">
           <Toolbar>
             <Typography variant="h2" className={classes.title}>
-              Imagio App
+              Imagio
             </Typography>
             <Button color="inherit" onClick={pushProfile} size="large">
               {" "}
