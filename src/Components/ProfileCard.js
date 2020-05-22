@@ -68,22 +68,26 @@ export default function ProfileCard() {
   }
 
   function saveData() {
-    firestore
-      .collection("users")
-      .doc(uid)
-      .set({
-        firstName: first,
-        lastName: last,
-        bioimp: bio,
-        websiteimp: website,
-        countryimp: country,
-      })
-      .then(function () {
-        console.log("Document successfully written!");
-      })
-      .catch(function (error) {
-        console.error("Error writing document: ", error);
-      });
+    try {
+      firestore
+        .collection("users")
+        .doc(uid)
+        .set({
+          firstName: first,
+          lastName: last,
+          bioimp: bio,
+          websiteimp: website,
+          countryimp: country,
+        })
+        .then(function () {
+          console.log("Document successfully written!");
+        })
+        .catch(function (error) {
+          console.error("Error writing document: ", error);
+        });
+    } catch {
+
+    }
   }
 
   return (

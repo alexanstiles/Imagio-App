@@ -22,7 +22,7 @@ export const generateUserDocument = async (user, additionalData) => {
 
   if (!snapshot.exists) {
     // If a user does not exist, it makes one
-    const { firstName, lastName, email, bioimp, websiteimp, countryimp } = user;
+    const { firstName, lastName, email='', bioimp='', websiteimp='', countryimp='' } = user;
     try {
       await userRef.set({
         firstName,

@@ -35,7 +35,9 @@ export default function CreatePost() {
   const classes = useStyles();
   const [caption, setCaption] = useState('');
   
-  function addPost() {
+  function addPost(event) {
+    event.preventDefault();
+    console.log("this is ");
     firestore.collection("posts")
       .doc("insertimagehere")
       .set({
@@ -61,7 +63,7 @@ export default function CreatePost() {
         <Typography component="h1" variant="h5">
           Create A Post
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={addPost}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
@@ -83,7 +85,6 @@ export default function CreatePost() {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={addPost}
           >
             Create Post
           </Button>
