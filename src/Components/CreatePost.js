@@ -6,10 +6,19 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import { UserContext } from "../Authentication/UserProvider";
-import { firestore } from "../Authentication/Firebase";
+import { firestore, imageStorage } from "../Authentication/Firebase";
+import FileUploader from "react-firebase-file-uploader";
 
 const useStyles = makeStyles((theme) => ({
+  heroContent: {
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(8, 0, 6),
+  },
+  cardMedia: { 
+    paddingTop: "56.25%", // 16:9
+  },
   paper: {
     marginTop: theme.spacing(8),
     display: "flex",
@@ -33,6 +42,16 @@ export default function CreatePost() {
   const { uid } = useContext(UserContext);
   const classes = useStyles();
   const [caption, setCaption] = useState("");
+  const [imageURL, setImageURL] = useState("");
+
+  const handleUploadSuccess = (filename) => {
+    imageStorage
+      .ref(uid)
+      .child(filename)
+      .getDownloadURL()
+      .then((url) => setImageURL(url));
+    console.log(imageURL);
+  };
 
   function addPost(event) {
     event.preventDefault();
@@ -60,14 +79,21 @@ export default function CreatePost() {
   return (
     <>
       <NavBar />
-      <Container component="main" maxWidth="xs">
+      <React.Fragment>
+      <CssBaseline />
+        <div className={classes.heroContent}>
+          <Container maxWidth='sm'>
+            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+                Create A Post
+            </Typography>
+          </Container>
+        </div>
+        <Container component="main" maxWidth="xs">
         <div className={classes.paper}>
-          <Typography component="h1" variant="h5">
-            Create A Post
-          </Typography>
           <form className={classes.form} noValidate onSubmit={addPost}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
+                <img alt="random" src={imageURL} width="500" height="600"></img>
                 <TextField
                   variant="outlined"
                   required
@@ -81,6 +107,23 @@ export default function CreatePost() {
                 />
               </Grid>
             </Grid>
+            <FileUploader
+              accept="image/*"
+              name="postImage"
+              randomizeFilename
+              storageRef={imageStorage.ref(uid)}
+              onUploadSuccess={handleUploadSuccess}
+            />
+            <Button
+              type="upload"
+              fullWidth
+              variant="contained"
+              color="inherit"
+              className={classes.submit}
+              onClick={addPost}
+            >
+              Upload Image
+            </Button>
             <Button
               type="submit"
               fullWidth
@@ -93,6 +136,7 @@ export default function CreatePost() {
           </form>
         </div>
       </Container>
+      </React.Fragment>
     </>
   );
 }

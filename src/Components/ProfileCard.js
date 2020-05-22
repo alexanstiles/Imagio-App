@@ -171,10 +171,6 @@ export default function ProfileCard() {
                   Upload profile picture
                 </Button>
               </Grid>
-              <Grid item xs={12}>
-                <div>This is temp image space</div>
-                <img></img>
-              </Grid>
               <Grid>
                 <div style={{ marginTop: 125 }}></div>
               </Grid>
