@@ -22,6 +22,10 @@ function Copyright() {
 }
 
 const useStyles = makeStyles((theme) => ({
+  heroContent: {
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(8, 0, 6),
+  },
   cardGrid: {
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
@@ -56,20 +60,9 @@ export default function Home() {
         <main>
           <div className={classes.heroContent}>
             <Container maxWidth="sm">
-              <Typography
-                component="h1"
-                variant="h2"
-                align="center"
-                color="textPrimary"
-                gutterBottom
-              >
-                Most Recent Posts
+              <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom >                Most Recent Posts
               </Typography>
-              <Typography
-                variant="h5"
-                align="center"
-                color="textSecondary"
-                paragraph
+              <Typography variant="h5" align="center" color="textSecondary" paragraph
               >
                 Enjoy the posts others have posted recently. Feel free to
                 comment and leave a like.
